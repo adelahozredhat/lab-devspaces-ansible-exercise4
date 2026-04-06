@@ -1,0 +1,13 @@
+---
+- name: Operación Fedora
+  hosts: fedora_servers
+  gather_facts: no
+  tasks:
+    - name: Test de conexión (Ping)
+      ansible.builtin.ping:
+
+    - name: Crear archivo en el home del usuario
+      ansible.builtin.copy:
+        content: "Hemos estado aquí\n"
+        dest: "~/evidencia.txt"
+        mode: '0644'

@@ -1,0 +1,30 @@
+---
+- name: Consultar Namespaces en OpenShift
+  hosts: localhost
+  gather_facts: no
+  vars:
+    openhift_url_api_client: 
+    openhift_user:
+    openhift_password: 
+    openhift_validate_certs: false
+  tasks:
+
+    - name: 
+      shell: "oc login --insecure-skip-tls-verify -u {{openhift_user}} -p {{openhift_password}} {{openhift_url_api_client}} "
+
+    - name: 
+      shell: oc whoami --show-token
+      register: token
+
+    - name: Obtener lista de namespaces
+      kubernetes.core.k8s_info:
+        host: "{{ openhift_url_api_client }}"
+        api_key: "{{ token.stdout }}"
+        validate_certs: "{{openhift_validate_certs}}"
+        kind: Namespace
+      register: namespace_list
+
+    - name: Mostrar nombres de los namespaces
+      ansible.builtin.debug:
+        msg: "{{ item.metadata.name }}"
+      loop: "{{ namespace_list.resources }}"
