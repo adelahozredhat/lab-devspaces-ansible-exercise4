@@ -294,17 +294,11 @@ Comprueba que la IP/usuario en `inventory` sean alcanzables desde el entorno Dev
 
 ### 4.2 Playbook contra la API de OpenShift (namespaces)
 
-En el repositorio el playbook equivalente a un “get namespaces” es `**test-exec-openshift.yaml**`. El README histórico mencionaba `get-namespaces.yaml`; si quieres ese nombre, puedes copiarlo:
-
-```bash
-cp test-exec-openshift.yaml get-namespaces.yaml
-```
-
-Ejemplo de ejecución con la misma imagen (sin inventario remoto: el play es `localhost`):
+Ejemplo de ejecución con la otra imagen (sin inventario remoto: el play es `localhost`):
 
 ```bash
 ansible-navigator run test-exec-openshift.yaml \
-  --eei quay.io/adelahoz/ee_cap_aap_2.6 \
+  --eei quay.io/adelahoz/ee_kube_exec \
   --pp missing \
   --m stdout \
   -e '{"openhift_url_api_client":"https://api.<cluster>:6443","openhift_user":"<usuario>","openhift_password":"<contraseña>"}'
