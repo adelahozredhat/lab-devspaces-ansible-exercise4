@@ -16,16 +16,5 @@ components:
           value: '~/.ansible/collections:/usr/share/ansible/collections:/projects/ansible-devspaces-demo/collections'
         - name: 'KUBEDOCK_ENABLED'
           value: "true"
-commands:
-
-  - id: molecule-create
-    exec:
-      label: "1.Molecule: start a test pod for the automation"
-      commandLine: 'source $HOME/.bashrc && molecule create'
-      workingDir: ${PROJECTS_ROOT}/ansible-devspaces-demo/collections/ansible_collections/sample_namespace/sample_collection/extensions
-      group:
-        kind: run
-        isDefault: true
-      component: tooling-container
 
  
