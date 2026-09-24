@@ -21,7 +21,7 @@
         host: "{{ openhift_url_api_client }}"
         api_key: "{{ token.stdout }}"
         validate_certs: "{{openhift_validate_certs}}"
-        kind: Namespace
+        kind: Project
       register: namespace_list
 
     - name: Mostrar nombres de los namespaces
