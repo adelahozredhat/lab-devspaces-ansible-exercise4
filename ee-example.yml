@@ -22,7 +22,6 @@ dependencies:
   system:
     - tar                       # Útil para la extracción de binarios si fuera necesario
     - gzip
-    - openshift-clients
 
 images:
   base_image:
