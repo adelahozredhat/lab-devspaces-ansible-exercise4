@@ -21,6 +21,7 @@
         host: "{{ openhift_url_api_client }}"
         api_key: "{{ token.stdout }}"
         validate_certs: "{{openhift_validate_certs}}"
+        api_version: project.openshift.io/v1
         kind: Project
       register: namespace_list
 
